@@ -125,11 +125,25 @@ int BSTSet::size()
 	
     return sizeRec(root); //change this after completing this function
 }
+int BSTSet::heightRec(TNode* t){
+    if(t==NULL){
+        return -1;
+    }else{
+        int r = heightRec(t->right);
+        int l = heightRec(t->left);
+
+        if(r>l){
+            return r + 1;
+        }else{
+            return l + 1;
+        }
+    }
+}
 
 int BSTSet::height()
 {
 	// TODO
-    return -2; //change this after completing this function
+    return heightRec(root); //change this after completing this function
 }
 
 // create and use class MyStack

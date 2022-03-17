@@ -12,6 +12,7 @@ private:
 	void addRec(TNode* t, int v);
 	bool isInRec(TNode* t, int v);
 	int sizeRec(TNode* t);
+	int heightRec(TNode* t);
 	TNode* subTreemin(TNode* t);
 
 public:
