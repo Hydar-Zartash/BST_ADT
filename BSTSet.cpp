@@ -97,10 +97,40 @@ bool BSTSet::remove(int v)
 	// TODO
     return true; //change this after completing this function
 }
+int BSTSet::min() const{
+    TNode * t = root;
+    while(t->left!=NULL){
+        t=t->left;
+    }
+    return t->element;
+}
+int BSTSet::max() const{
+    TNode * t = root;
+    while(t->right!=NULL){
+        t=t->right;
+    }
+    return t->element;
+}
+void BSTSet::lists(std::vector<int> &in, TNode* t) const{
+    if(t!=NULL){
+        lists(in, t->left);
+        in.push_back(t->element);
+        lists(in, t->right);
+    }
+
+}
+
+void BSTSet::UnionRec(TNode* t){
+    if(t!=NULL){
+        UnionRec(t->left);
+        add(t->element);
+        UnionRec(t->right);
+    }
+}
 
 void BSTSet::Union(const BSTSet& s)
 {
-	// TODO
+	UnionRec(s.root);
 }
 
 void BSTSet::intersection(const BSTSet& s)

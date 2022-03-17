@@ -19,7 +19,7 @@ int main()
 	tbs.testIsIn(totalMark, fullMark);
 	tbs.testAdd(totalMark, fullMark);
 	//tbs.testRemove(totalMark, fullMark);
-	//tbs.testUnion(totalMark, fullMark);
+	tbs.testUnion(totalMark, fullMark);
 	//tbs.testIntersection(totalMark, fullMark);
 	//tbs.testDifference(totalMark, fullMark);
 	tbs.testSize(totalMark, fullMark);
