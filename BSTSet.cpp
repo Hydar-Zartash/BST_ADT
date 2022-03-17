@@ -89,25 +89,7 @@ void BSTSet::addRec(TNode* t, int v){
 
 void BSTSet::add(int v)
 {
-    addRec(root, v);/*
-    TNode* t = root;
-    if(root == NULL){
-        root = new TNode(v,NULL,NULL);
-    }
-    if(!isIn(v)){
-	while(t!=NULL){
-                
-        if(v < t->element && t->left!=NULL){
-            t = t->left;
-        }else if(v < t->element && t->left==NULL) {
-            t->left = new TNode(v, NULL,NULL);
-        }else if(v > t->element && t->right!=NULL){
-            t=t->right;
-        }else{
-            t->right = new TNode(v, NULL,NULL);
-        }
-    }
-    }*/
+    addRec(root, v);
 }
 
 bool BSTSet::remove(int v)
@@ -130,11 +112,18 @@ void BSTSet::difference(const BSTSet& s)
 {
 	// TODO
 }
+int BSTSet::sizeRec(TNode* t){
+    if(t==NULL){
+        return 0;
+    }else{
+        return(sizeRec(t->left) + sizeRec(t->right) +1);//every node traversed adds one
+    }
+}
 
 int BSTSet::size()
 {
-	// TODO
-    return -1; //change this after completing this function
+	
+    return sizeRec(root); //change this after completing this function
 }
 
 int BSTSet::height()

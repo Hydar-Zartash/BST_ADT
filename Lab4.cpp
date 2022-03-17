@@ -18,15 +18,15 @@ int main()
 	tbs.testConstructor(totalMark, fullMark);
 	tbs.testIsIn(totalMark, fullMark);
 	tbs.testAdd(totalMark, fullMark);
-	/*tbs.testRemove(totalMark, fullMark);
-	tbs.testUnion(totalMark, fullMark);
-	tbs.testIntersection(totalMark, fullMark);
-	tbs.testDifference(totalMark, fullMark);
+	//tbs.testRemove(totalMark, fullMark);
+	//tbs.testUnion(totalMark, fullMark);
+	//tbs.testIntersection(totalMark, fullMark);
+	//tbs.testDifference(totalMark, fullMark);
 	tbs.testSize(totalMark, fullMark);
-	tbs.testHeight(totalMark, fullMark);
-	tbs.testPrintNonRec(totalMark, fullMark);
-	tbs.testBonus(bonusTotalMark, bonusFullMark);
-*/
+	//tbs.testHeight(totalMark, fullMark);
+	//tbs.testPrintNonRec(totalMark, fullMark);
+	//tbs.testBonus(bonusTotalMark, bonusFullMark);
+
 	cout << "********************************" << endl;
 	cout << "*** FINAL TOTAL MARK IS " << totalMark << "/" << fullMark << " ***" << endl;
 	cout << "*** FINAL BONUS MARK IS " << bonusTotalMark << "/" << bonusFullMark << " ***" << endl;
