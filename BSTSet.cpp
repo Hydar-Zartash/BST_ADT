@@ -45,6 +45,8 @@ BSTSet::~BSTSet()
 {
 	// TODO
 }
+
+
 bool BSTSet::isInRec(TNode* t, int v){
     if(root == NULL){
         return false;
@@ -65,24 +67,29 @@ bool BSTSet::isInRec(TNode* t, int v){
 bool BSTSet::isIn(int v)
 {
     return isInRec(root, v);
-    /*
-	TNode* t = root;
-    while(t!=NULL){
-        if(v == t->element){
-            return true;
-        }else if(v < t->element){
-            t = t->left;
+}
+
+void BSTSet::addRec(TNode* t, int v){
+    if (root == NULL){
+        root = new TNode(v,NULL,NULL);
+    }else if(!isIn(v)){
+        if(v<t->element && t->left == NULL){
+            t->left = new TNode(v,NULL,NULL);
+        }else if(v>t->element && t->right == NULL){
+            t->right=new TNode(v,NULL,NULL);
         }else{
-            t=t->right;
+            if(v < t->element){
+                addRec(t->left, v);
+            }else{
+            return addRec(t->right, v);
+        }
         }
     }
-    return false;
-
-    */
 }
 
 void BSTSet::add(int v)
-{/*
+{
+    addRec(root, v);/*
     TNode* t = root;
     if(root == NULL){
         root = new TNode(v,NULL,NULL);
