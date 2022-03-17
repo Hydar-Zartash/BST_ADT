@@ -21,10 +21,10 @@ int main()
 	tbs.testRemove(totalMark, fullMark);
 	tbs.testUnion(totalMark, fullMark);
 	tbs.testIntersection(totalMark, fullMark);
-	//tbs.testDifference(totalMark, fullMark);
+	tbs.testDifference(totalMark, fullMark);
 	tbs.testSize(totalMark, fullMark);
 	tbs.testHeight(totalMark, fullMark);
-	//tbs.testPrintNonRec(totalMark, fullMark);
+	tbs.testPrintNonRec(totalMark, fullMark);
 	//tbs.testBonus(bonusTotalMark, bonusFullMark);
 
 	cout << "********************************" << endl;

@@ -10,14 +10,14 @@ private:
 	// must contain only one private field
 	TNode* root = NULL;
 	void addRec(TNode* t, int v);
-	bool isInRec(TNode* t, int v);
+	bool isInRec( TNode* t, int v) const;
 	int sizeRec(TNode* t);
 	int heightRec(TNode* t);
 	void removeRec(TNode* &t, int v);
 	void UnionRec(TNode* t);
 	void deleteRec(TNode* t);
-	void intersecionRec(BSTSet &s,TNode* t);
-	void diffRec(BSTSet &s, TNode* t);
+	void intersecionRec(TNode*& t1, TNode*& t2) ;
+	void diffRec( TNode* t);
 	TNode* subTreemin(TNode* t);
 	std::vector<int> lists(std::vector<int> &in, TNode* t) const;
 	TNode* min(TNode* t);

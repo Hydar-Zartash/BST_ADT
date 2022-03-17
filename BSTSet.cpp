@@ -63,8 +63,8 @@ void BSTSet::deleteRec(TNode* t){
     }
 }
 
-bool BSTSet::isInRec(TNode* t, int v){
-    if(root == NULL){
+bool BSTSet::isInRec( TNode* t, int v) const{
+    if(t == NULL){
         return false;
     }
     if(t->element == v){
@@ -166,31 +166,40 @@ void BSTSet::Union(const BSTSet& s)
 	UnionRec(s.root);
 }
 
-void BSTSet::intersecionRec(BSTSet &s, TNode* t){
-    if(t!=NULL){
-        intersecionRec(s, t->left);
-        if(!s.isIn(t->element)){remove(t->element);}
-        intersecionRec(s, t->right);
+void BSTSet::intersecionRec( TNode*& t1, TNode*& t2){
+
+
+    if(t1 !=nullptr){
+        
+        if(!isInRec(t2, t1->element)){
+          
+            removeRec(t1, t1->element);
+            intersecionRec(t1,t2);
+        }else{
+            intersecionRec(t1->left,t2);
+            intersecionRec(t1->right,t2);
+        }
     }
 }
 
 void BSTSet::intersection(const BSTSet& s)
 {
-    BSTSet copy = s;
-	intersecionRec(copy, root); 
+    
+    TNode* input = s.root;
+	intersecionRec(root, input); 
 }
-void BSTSet::diffRec(BSTSet &s, TNode* t){
-    /*if(t!=NULL){
-        diffRec(s, t->left);
-        if(s.isIn(t->element)){remove(t->element);}
-        diffRec(s, t->right);
-    }*/
+void BSTSet::diffRec(TNode* t){
+    if(t!=NULL){
+        diffRec(t->left);
+        if(isIn(t->element)){remove(t->element);}
+        diffRec(t->right);
+    }
 }
 
 void BSTSet::difference(const BSTSet& s)
 {
-	BSTSet copy = s;
-	diffRec(copy, root); 
+
+	diffRec( s.root); 
 }
 int BSTSet::sizeRec(TNode* t){
     if(t==NULL){
