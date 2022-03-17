@@ -16,6 +16,8 @@ private:
 	void removeRec(TNode* &t, int v);
 	void UnionRec(TNode* t);
 	void deleteRec(TNode* t);
+	void intersecionRec(BSTSet &s,TNode* t);
+	void diffRec(BSTSet &s, TNode* t);
 	TNode* subTreemin(TNode* t);
 	std::vector<int> lists(std::vector<int> &in, TNode* t) const;
 	TNode* min(TNode* t);

@@ -166,14 +166,31 @@ void BSTSet::Union(const BSTSet& s)
 	UnionRec(s.root);
 }
 
+void BSTSet::intersecionRec(BSTSet &s, TNode* t){
+    if(t!=NULL){
+        intersecionRec(s, t->left);
+        if(!s.isIn(t->element)){remove(t->element);}
+        intersecionRec(s, t->right);
+    }
+}
+
 void BSTSet::intersection(const BSTSet& s)
 {
-	// TODO
+    BSTSet copy = s;
+	intersecionRec(copy, root); 
+}
+void BSTSet::diffRec(BSTSet &s, TNode* t){
+    /*if(t!=NULL){
+        diffRec(s, t->left);
+        if(s.isIn(t->element)){remove(t->element);}
+        diffRec(s, t->right);
+    }*/
 }
 
 void BSTSet::difference(const BSTSet& s)
 {
-	// TODO
+	BSTSet copy = s;
+	diffRec(copy, root); 
 }
 int BSTSet::sizeRec(TNode* t){
     if(t==NULL){
