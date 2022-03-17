@@ -13,11 +13,13 @@ private:
 	bool isInRec(TNode* t, int v);
 	int sizeRec(TNode* t);
 	int heightRec(TNode* t);
+	void removeRec(TNode* &t, int v);
 	void UnionRec(TNode* t);
+	void deleteRec(TNode* t);
 	TNode* subTreemin(TNode* t);
-	void lists(std::vector<int> &in, TNode* t) const;
-	int min() const;
-	int max() const;
+	std::vector<int> lists(std::vector<int> &in, TNode* t) const;
+	TNode* min(TNode* t);
+
 
 public:
 	// required constructors/destructor

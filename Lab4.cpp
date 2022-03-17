@@ -6,7 +6,7 @@ using namespace std;
 int main()
 {
 	int max_run = 50;
-	vector<int> max_size_array = { 1, 5, 10, 50 };
+	vector<int> max_size_array = {  5, 10, 50 };
 
 	double fullMark = 0;
 	double totalMark = 0;
@@ -18,7 +18,7 @@ int main()
 	tbs.testConstructor(totalMark, fullMark);
 	tbs.testIsIn(totalMark, fullMark);
 	tbs.testAdd(totalMark, fullMark);
-	//tbs.testRemove(totalMark, fullMark);
+	tbs.testRemove(totalMark, fullMark);
 	tbs.testUnion(totalMark, fullMark);
 	//tbs.testIntersection(totalMark, fullMark);
 	//tbs.testDifference(totalMark, fullMark);

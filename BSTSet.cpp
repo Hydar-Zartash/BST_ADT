@@ -10,6 +10,15 @@ BSTSet::BSTSet()
 
 BSTSet::BSTSet(const std::vector<int>& input)
 {
+    root = NULL;
+    if(input.size() > 0){
+        for(int i = 0; i < input.size(); i++){
+        if(!isIn(input[i])){
+            add(input[i]);
+        }
+        }
+    }
+    /*
 	bool prevdirection = false; //used to determine direction of the prev node traveled
 	if (input.size() > 0) {
 		root = new TNode(input[0], NULL, NULL); //first thing in input is the root
@@ -37,15 +46,22 @@ BSTSet::BSTSet(const std::vector<int>& input)
 			current = root; //resets current and prev so each new addition starts from the root
 			prev = root;
 		}
-	}
+	}*/
 }
 
 
 BSTSet::~BSTSet()
 {
-	// TODO
+	deleteRec(root);
 }
 
+void BSTSet::deleteRec(TNode* t){
+    if(t!=NULL){
+        deleteRec(t->left);
+        deleteRec(t->right);
+        free(t);
+    }
+}
 
 bool BSTSet::isInRec(TNode* t, int v){
     if(root == NULL){
@@ -92,26 +108,43 @@ void BSTSet::add(int v)
     addRec(root, v);
 }
 
+void BSTSet::removeRec(TNode* &t, int v){
+    if(t==NULL){
+        return;
+    }if(v< t->element){
+        removeRec(t->left, v);
+    }else if(v > t->element){
+        removeRec(t->right, v);
+    }else if(t->left!=NULL &&t->right!=NULL){//two kids
+        t->element = min(t->right)->element;
+        removeRec(t->right, t->element);
+    }else{
+        TNode* oldNode = t;
+        t = (t->left != NULL)? t->left : t->right;
+        delete t;
+    }
+
+    
+}
 bool BSTSet::remove(int v)
 {
-	// TODO
-    return true; //change this after completing this function
+    bool ret = isIn(v);
+    if(ret){
+        removeRec(root, v);
+    }
+	
+	
+    return ret; 
 }
-int BSTSet::min() const{
-    TNode * t = root;
+TNode* BSTSet::min(TNode * t){
+    
     while(t->left!=NULL){
         t=t->left;
     }
-    return t->element;
+    return t;
 }
-int BSTSet::max() const{
-    TNode * t = root;
-    while(t->right!=NULL){
-        t=t->right;
-    }
-    return t->element;
-}
-void BSTSet::lists(std::vector<int> &in, TNode* t) const{
+
+std::vector<int> BSTSet::lists(std::vector<int> &in, TNode* t) const{
     if(t!=NULL){
         lists(in, t->left);
         in.push_back(t->element);
